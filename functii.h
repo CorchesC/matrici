@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -387,3 +387,158 @@ void sortateColoana(int x[100][100], int m, int n,int uc) {
 	cout << "=====================" << endl;
 	afisare(x, m, n);
 }
+int sumaValorilorPare(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (x[i][j] % 2 == 0) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+void sumaFiecareiLinii(int x[100][100], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		int s = 0;
+		for (int j = 0; j < n; j++) {
+			s += x[i][j];
+		}
+		cout << "Suma pentru linia " << i+1 << " este: " << s << endl;
+	}
+}
+void celMaiMicNumarFormatDinSumaElemLiniei(int x[100][100], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		int min = 9999;
+		int poz = 0;
+		for (int j = 0; j < n; j++) {
+			if (x[i][j] < min) {
+				min = x[i][j];
+				poz = j;
+			}
+		}
+		int s = 0;
+		for (int f = 0; f < n; f++) {
+			if (f != poz) {
+				s += x[i][f];
+			}
+		}
+		cout << "Pentru linia " << i + 1 << "cea mai mică valoare care se poate obține adunând elementele de pe linie, cu excepția unuia este : " << s << endl;
+	}
+}
+int nrProdusueAleElemenColoanelorDivizibileCuP(int x[100][100], int m, int n, int p) {
+	int nr = 0;
+	for (int j = 0; j < n; j++) {
+		int prod = 1;
+		for (int i = 0; i < m; i++) {
+			prod = prod * x[i][j];
+		}
+		if (prod > 1 && prod % p == 0) {
+			nr++;
+		}
+	}
+	return nr;
+}
+void afisareColoanaCuSumaElementelorMaxima(int x[100][100], int m, int n) {
+	int max = -100;
+	int cMax = 0;
+	for (int j = 0; j < n; j++) {
+		int s = 0;
+		for (int i = 0; i < m; i++) {
+			s += x[i][j];
+		}
+		if (s > max) {
+			max = s;
+			cMax = j;
+		}
+	}
+	for (int j = 0; j < n; j++) {
+		if (j == cMax) {
+			for (int i = 0; i < m; i++) {
+				cout << x[i][j] << " ";
+			}
+		}
+	}
+	cout << endl;
+}
+int coloanaCuSumaElementelorMinima(int x[100][100], int m, int n) {
+	int min = 1000;
+	int cMin = 0;
+	for (int j = 0; j < n; j++) {
+		int s = 0;
+		for (int i = 0; i < m; i++) {
+			s += x[i][j];
+		}
+		if (s < min) {
+			min = s;
+			cMin = j;
+		}
+	}
+	return cMin;
+}
+int ceaMaiMareSecventaDeNrPrime(int x[100][100], int m, int n) {
+	int nrE = -1;
+	int nrET = 0;
+	for (int j = 0; j <n; j++) {
+		for (int i = 0; i < m; i++) {
+			if (nrPrim(x[i][j]) == true) {
+				nrET++;
+			}
+			if (nrPrim(x[i][j]) == false) {
+				if (nrET > nrE) {
+					nrE = nrET;
+				}
+				nrET = 0;
+			}
+		}
+	}
+	return nrE;
+}
+void valoareaMinimaAFiecareiColoane(int x[100][100], int m, int n) {
+	for (int j = 0; j < n; j++) {
+		int min = 9999;
+		for (int i = 0; i < m; i++) {
+			if (x[i][j] < min) {
+				min = x[i][j];
+			}
+		}
+		if (min != 9999) {
+			cout << "Valoarea minima a coloanei " << j << " este: " << min << endl;
+		}
+	}
+
+}
+int sumaIndicilorColoanelorCareContinK(int x[100][100], int m, int n,int k) {
+	int s = 0;
+	for (int j = 0; j < n; j++) {
+		int aff = false;
+		for (int i = 0; i < m; i++) {
+			if (x[i][j] == k) {
+				aff = true;
+			}
+		}
+		if (aff == true) {
+			s += j;
+		}
+	}
+	return s;
+}
+int rezolvareInnisipare(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (x[i][j - 1] > x[i][j] && x[i][j + 1] > x[i][j]) {
+				if (x[i][j - 1] > x[i][j + 1]) {
+					int dif = x[i][j - 1] - x[i][j];
+					s += dif;
+				}
+				if (x[i][j - 1] < x[i][j + 1]) {
+					int dif = x[i][j + 1] - x[i][j];
+					s += dif;
+				}
+			}
+		}
+	}
+	return s;
+}
+		
