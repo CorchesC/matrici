@@ -188,3 +188,115 @@ void ex25() {
 	int s = rezolvareInnisipare(x, m, n);
 	cout << "Numarul necesar pentru inisipare este: " << s << endl;
 }
+void ex26() {
+	//Considerăm o matrice pătratică cu N linii și N coloane. În această matrice sunt definite 4 zone:
+		//zona 1, formată din elementele situate strict deasupra diagonalei principale și strict deasupra diagonalei secundare;
+		//zona 2, formată din elementele situate strict deasupra diagonalei principale și strict sub diagonala secundară;
+		//zona 3, formată din elementele situate strict sub diagonala principală și strict sub diagonala secundară;
+		//zona 4, formată din elementele situate strict sub diagonala principală și strict deasupra diagonalei secundare;
+	//Se dă o matrice pătratică și un număr natural Z, reprezentând o zonă din matrice.Să se determine suma elementelor din zona Z.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	cout << "Introduceti numarul zonei: " << endl;
+	int z;
+	cin >> z;
+	int s = sumaZonaSpecificata(x, m, n, z);
+	if (s != 0) {
+		cout << "Suma zonei " << z << " este: " << s << endl;
+	}
+	else if (s == 0) {
+		cout << "Numarul zonei este invalid" << endl;
+	}
+}
+void ex27() {
+	//Se dă o matrice cu n linii şi n coloane şi elemente numere naturale. Calculaţi diferenţa în valoare absolută dintre sumele elementelor de pe cele două diagonale.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int dA = diferentaAbsolutaSumaDiagPrincipalaSecundara(x, m, n);
+	cout << "Diferenta absoluta dintre sumele elementelor de pe diagonala principala si secundara este: " << dA << endl;
+}
+void ex28() {
+	//Se dă o matrice cu n linii şi n coloane şi elemente numere naturale. Calculaţi cel mai mare divizor comun al sumei elementelor de deasupra diagonalei principale și al sumei elementelor de sub diagonala principală.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int cmmdc = cmmdcDiagonalelorEx28(x, m, n);
+	cout << "Cel mai mare divizor comun al sumei elementelor de deasupura diagonalei principale si cea de sub diagonala principala este : " << cmmdc << endl;
+}
+void ex29() {
+	//Se dă o matrice cu n linii şi n coloane şi elemente numere naturale. Să se determine suma elementelor de pe cele două diagonale vecine cu diagonala principală
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int s1 = sumaPrimuluiVecinAlDiagonaleiPrincipale(x, m, n);
+	int s2 = sumaAlDoileaVecinAlDiagonaleiPrincipale(x, m, n);
+	int st = s1 + s2;
+	cout << "Suma elementelor de pe cele doua diahonale vecine cu diagonala principala este: " << st << endl;
+}
+void ex30() {
+	//Se dă o matrice cu n linii şi n coloane şi elemente numere naturale. Să se afișeze elementele prin parcurgerea șerpuită a matricei, începând din elementul de pe prima linie și prima coloană, ca în exemplu.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	parcurgereSerpuita(x, m, n);
+}
+void ex31() {
+	//Se dă o matrice cu n linii şi n coloane şi elemente numere naturale. Să se afişeze, în ordine crescătoare, sumele elementelor din cele patru zone delimitate de diagonale.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	afisareSumeIsoscele(x, m, n);
+}
+void ex32() {
+	//Se dă o matrice cu n linii şi n coloane şi elemente numere naturale. Să se determine câte elemente ale matricei se află pe linii și coloane de sumă egală. Elementul a[i,j] va fi numărat dacă suma elementelor de pe linia i este egală cu cea de pe coloana j.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int nr = nrElementeCuSumaLiniilorSiColoanelorEgala(x, m, n);
+	cout << "Numarul de elemente ce se afla pe linii si coloane cu suma egala este: " << endl;
+}
+void ex33() {
+	//Scrieţi un program care citeşte de la tastatură un tablou bidimensional cu n linii şi n coloane și afişează pe ecran numărul valorilor din tablou care sunt strict mai mari decât toți vecinii lor.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int nr = nrElementeStrictMaiMariCaVeciniiLor(x, m, n);
+	cout << "Numarul de elemente strict mai mari ca vecinii lor este: " << nr << endl;
+}
+void ex34() {
+	//Se dă o matrice pătratică cu n linii și n coloane și elemente numere naturale mai mici decât 1000. Să se afișeze în ordine strict crescătoare valorile situate sub diagonala principală și deasupra diagonalei secundare. Dacă o valoare apare în zona respectivă de mai multe ori, se va afișa o singură dată.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	afisareEx34(x, m, n);
+}
+void ex35(){
+	//Se dă o matrice pătratică cu n linii și n coloane și elemente numere naturale mai mici decât 1000. Să se afișeze în ordine strict crescătoare valorile care apar sub diagonala principală și sub diagonală secundara de cel puţin 2 ori. Fiecare valoare se va afişa o singură dată.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	afisareEx35(x, m, n);
+}
+void ex36() {
+	//Se dă un număr natural n, urmat de o matrice pătratică cu n * n elemente, numere naturale. Să se verifice dacă matricea dată este un pătrat magic.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	bool aff = matricePatratMagic(x, m, n);
+	aff == true
+		?
+		cout << "Matricea este un patrat magic" << endl
+		:
+		cout << "Matricea nu este un patrat magic " << endl;
+}
+void ex37() {
+	//Se dă o matrice cu elemente numere naturale. Să se determine ultima cifră a produsului elementelor de pe diagonala secundară cu proprietatea că sunt minime pe coloanele lor.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int uc = ultimaCifraAProdusuliDiagSecundaraEx37(x, m, n);
+	cout << "Ultima cifra a produsului elementelor de pe diagoanala secundara cu propietatea ca sunt minime pe coloanele lor este: " << uc << endl;
+}
+void ex38() {
+	//Se dă o matrice cu elemente numere întregi. Să se determine media aritmetică a elementelor strict pozitive din matrice, care sunt situate sub diagonala principală.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	double ma = maAleElementelorStrictPozitiveSubDiagPrincipala(x, m, n);
+	cout << "Media aritmetica a elementelor strict pozitive din matrice care sunt situate sub diagonala principala este: " << ma << endl;
+}
+void ex39() {
+	//Să se parcurgă în sensul acelor de ceasornic chenarul exterior al unei matrice pătratice.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	parcurgereChenar(x, m, n);
+}

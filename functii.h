@@ -541,4 +541,418 @@ int rezolvareInnisipare(int x[100][100], int m, int n) {
 	}
 	return s;
 }
+int sumaZona1(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i < j && i + j < n - 1) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaZona2(int x[100][100], int n, int m) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j < n - 1) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaZona3(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j > n - 1) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaZona4(int x[100][100], int n, int m) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i < j && i + j > n - 1) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaZonaSpecificata(int x[100][100], int m, int n, int z) {
+	if (z == 1) {
+		int s = sumaZona1(x,n,m);
+		return s;
+	}
+	if (z == 2) {
+		int s = sumaZona2(x, n, m);
+		return s;
+	}
+	if (z == 3) {
+		int s = sumaZona3(x, n, m);
+		return s;
+	}
+	if (z == 4) {
+		int s = sumaZona4(x, n, m);
+		return s;
+	}
+	if (z != 1 && z != 2 && z != 3 && z != 4) {
+		return 0;
+	}
+}
+int sumaDiagonalaPrincipala(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		s += x[i][i];
+	}
+	return s;
+}
+int sumaDiagonalaSecundara(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = n - 1; i >= 0; i--) {
+		s+= x[i][(n - 1) - i];
+	}
+	return s;
+}
+int diferentaAbsolutaSumaDiagPrincipalaSecundara(int x[100][100], int m, int n) {
+	int dif = 0;
+	int sP = sumaDiagonalaPrincipala(x, m, n);
+	int sS = sumaDiagonalaSecundara(x, m, n);
+	if (sP > sS) {
+		dif = sP - sS;
+		return dif;
+	}
+	else if (sS > sP) {
+		dif = sS - sP;
+		return dif;
+	}
+}
+int celMaiMareDivComun(int a, int b) {
+	int dmaxA = -1;
+	int dmaxB = -1;
+	int dmaxCOM = 0;
+	int x1 = 1;
+	int x2 = 1;
+	for (x1 = 1, x2 = 1; x1 <= a, x2 <= b; x1++, x2++) {
+		if (a % x1 == 0) {
+			if (x1 > dmaxA) {
+				dmaxA = x1;
+			}
+		}
+		if (b % x2 == 0) {
+			if (x2 > dmaxB) {
+				dmaxB = x2;
+			}
+		}
+		if (dmaxA == dmaxB) {
+			dmaxCOM = dmaxA;
+		}
+	}
+	return dmaxCOM;
+}
+int sumaDeasupraDiagonaleiPrincipale(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int c = i + 1; c < n; c++) {
+			s+= x[i][c] ;
+		}
+	}
+	return s;
+}
+int sumaDedesuptDiagonaleiPrincipale(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int c = 0; c < i; c++) {
+			s += x[i][c];
+		}
+	}
+	return s;
+}
+int cmmdcDiagonalelorEx28(int x[100][100], int m, int n) {
+	int dP = sumaDeasupraDiagonaleiPrincipale(x, m, n);
+	int sP = sumaDedesuptDiagonaleiPrincipale(x, m, n);
+	int cmmdc = celMaiMareDivComun(dP, sP);
+	return cmmdc;
+}
+int sumaPrimuluiVecinAlDiagonaleiPrincipale(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		if (x[i][i + 1] > 0) {
+			s += x[i][i+1];
+		}
 		
+	}
+	return s;
+}
+int sumaAlDoileaVecinAlDiagonaleiPrincipale(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		if (x[i + 1][i] > 0) {
+			s += x[i + 1][i];
+		}
+		
+	}
+	return s;
+}
+void parcurgereSerpuita(int x[100][100], int m, int n) {
+	int v[100], d = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			v[d] = x[i][j];
+			d++;
+		}
+	}
+	bubbleSort(v, d);
+	for (int f = 0; f < d; f++) {
+		cout << v[f] << " ";
+	}
+	cout << endl;
+}
+int sumaNord(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i < j && i + j < n - 1) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaSud(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j > n - 1) {
+				s+= x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaEst(int x[100][100], int m, int n) {
+	int s = 0; 
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i < j && i + j > n - 1) {
+				s += x[i][j];
+			}
+		}
+	}
+	return s;
+}
+int sumaVest(int x[100][100], int m, int n) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j < n - 1) {
+				s+= x[i][j];
+			}
+		}
+	}
+	return s;
+
+}
+void afisareSumeIsoscele(int x[100][100], int m, int n) {
+	int v[100], d = 0;
+	int nord = sumaNord(x, m, n);
+	v[d] = nord;
+	d++;
+	int sud = sumaSud(x, m, n);
+	v[d] = sud;
+	d++;
+	int est = sumaEst(x, m, n);
+	v[d] = est;
+	d++;
+	int vest = sumaVest(x, m, n);
+	v[d] = vest;
+	d++;
+	bubbleSort(v, d);
+	for (int i = 0; i < d; i++) {
+		cout << v[i] << " ";
+	}
+	cout << endl;
+}
+int sumaElementelorLinie(int x[100][100], int m, int n, int l) {
+	int s = 0;
+	for (int j = 0; j < m; j++) {
+		s += x[l][j];
+	}
+	return s;
+}
+int sumaElementelorColoana(int x[100][100], int m, int n, int c) {
+	int s = 0;
+	for (int i = 0; i < n; i++) {
+		s += x[i][c];
+	}
+	return s;
+}
+int nrElementeCuSumaLiniilorSiColoanelorEgala(int x[100][100], int m, int n) {
+	int nr = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			if (sumaElementelorLinie(x, m, n, i) == sumaElementelorColoana(x, m, n, j)) {
+				nr++;
+			}
+		}
+	}
+	return nr;
+}
+int nrElementeStrictMaiMariCaVeciniiLor(int x[100][100], int m, int n) {
+	int nr = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 1; j < m; j++) {
+			if (x[i][j] > x[i][j - 1] && x[i][j] > x[i][j + 1]) {
+				nr++;
+			}
+		}
+	}
+	return nr;
+}
+bool kApartineVectorului(int v[] , int dim, int k) {
+	for (int i = 0; i < dim; i++) {
+		if (v[i] == k) {
+			return true;
+		}
+	}
+	return false;
+}
+void afisareEx34(int x[100][100], int m, int n) {
+	int v[100], d = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j < n - 1) {
+				if (kApartineVectorului(v,d,x[i][j]) == false) {
+					v[d] = x[i][j];
+					d++;
+				}
+			}
+		}
+	}
+	bubbleSort(v, d);
+	for (int f = 0; f < d; f++) {
+		cout << v[f] << " ";
+	}
+	cout << endl;
+}
+bool kApareDe2OriSud(int x[100][100], int m, int n, int k) {
+	int nr = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j > n - 1) {
+				if (x[i][j] == k) {
+					nr++;
+				}
+			}
+		}
+	}
+	if (nr >= 2) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+void afisareEx35(int x[100][100], int m, int n) {
+	int v[100], d = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i > j && i + j > n - 1) {
+				if (kApartineVectorului(v, d, x[i][j]) == false && kApareDe2OriSud(x,m,n,x[i][j]) == true) {
+					v[d] = x[i][j];
+					d++;
+				}
+			}
+		}
+	}
+	bubbleSort(v, d);
+	for (int f = 0; f < d; f++) {
+		cout << v[f] << " ";
+	}
+	cout << endl;
+}
+bool elementeVectorEgale(int v[], int dim) {
+	bool aff = false;
+	for (int i = 0; i < dim-1; i++) {
+		if (v[i] == v[i + 1]) {
+			aff = true;
+		}
+		else {
+			return false;
+		}
+	}
+	return aff;
+}
+bool matricePatratMagic(int x[100][100], int m, int n) {
+	int sdp = sumaDiagonalaPrincipala(x, m, n);
+	int sds = sumaDiagonalaSecundara(x, m, n);
+	int v[100], d = 0;
+	for (int i = 0; i < n; i++) {
+		int s = 0;
+		for (int j = 0; j < m; j++) {
+			s += x[i][j];
+		}
+		v[d] = s;
+		d++;
+	}
+	if (elementeVectorEgale(v, d) == true && sdp == sds && sdp == v[0]) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+int minimaDePeColoana(int x[100][100], int m, int n,int c) {
+	int min = 9999999;
+	for (int i =0; i < n; i++) {
+		if (x[i][c] < min) {
+			min = x[i][c];
+		}
+	}
+	return min;
+}
+int ultimaCifraAProdusuliDiagSecundaraEx37(int x[100][100], int m, int n) {
+	int p = 1;
+	for (int i = n - 1; i >= 0; i--) {
+		if (x[i][(n - 1) - i] == minimaDePeColoana(x, m, n, i)) {
+			p = p * x[i][(n - 1) - i];
+		}
+	}
+	int ucP = p % 10;
+	return ucP;
+}
+double maAleElementelorStrictPozitiveSubDiagPrincipala(int x[100][100], int m, int n) {
+	double s = 0;
+	double nr = 0;
+	for (int i = 0; i < n; i++) {
+		for (int c = 0; c < i; c++) {
+			if (x[i][c] >= 0) {
+				s += x[i][c];
+				nr++;
+			}
+		}
+	}
+	double ma = s / nr;
+	return ma;
+}
+void parcurgereChenar(int x[100][100], int m, int n) {
+	for (int j = 0; j < m; j++) {
+		cout << x[0][j] << " ";
+	}
+	for (int i = 1; i < n; i++) {
+		cout << x[i][m - 1];
+	}
+	for (int j = m - 2; j >= 0; j--) {
+		cout << x[n - 1][j] << endl;
+	}
+	for (int i = n - 2; i < 0; i--) {
+		cout << x[i][0] << endl;
+	}
+	cout << endl;
+}
