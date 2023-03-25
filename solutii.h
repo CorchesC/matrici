@@ -300,3 +300,19 @@ void ex39() {
 	citire(x, m, n);
 	parcurgereChenar(x, m, n);
 }
+// exercitiul 1 fisa (19/03/2023) \/
+
+void ex40() {
+	//d) Stergeti linia si coloana tuturor elementelor cu propietatea ce au exact 3 cifre egale intre ele.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	stergereLiniiSiColoaneCuNrCuCifreEgaleIntreEle(x, m, n);
+	afisare(x, m, n);
+}
+void ex41() {
+	//e) Stergeti linia si coloana pe care se afla al doilea numar prim din matrice. Daca matricea nu contine cel putin 2 numere prime, se va afla mesajul nu exista.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	stergereLinieSiColoanaCuAlDoileaElementPrim(x, m, n);
+	afisare(x, m, n);
+}

@@ -956,3 +956,55 @@ void parcurgereChenar(int x[100][100], int m, int n) {
 	}
 	cout << endl;
 }
+void stergereLinie(int x[100][100], int& m, int n, int l) {
+	for (int i = l; i < m - 1; i++) {
+		for (int j = 0; j < n; j++) {
+			x[i][j] = x[i + 1][j];
+		}
+	}
+	m--;
+}
+void stergereColoana(int x[100][100], int m, int& n, int c) {
+	for (int j = c; j < n - 1; j++) {
+		for (int i = 0; i < m; i++) {
+			x[i][j] = x[i][j + 1];
+		}
+	}
+	n--;
+}
+bool areTreiCifreEgaleIntreEle(int n) {
+	while (n != 0) {
+		int c1 = n % 10;
+		int c2 = n % 100;
+		int c3 = n % 1000;
+		if (c1 == c2 == c3) {
+			return true;
+		}
+		n = n / 10;
+	}
+	return false;
+}
+void stergereLiniiSiColoaneCuNrCuCifreEgaleIntreEle(int x[100][100], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < m; j++) {
+			if (areTreiCifreEgaleIntreEle(x[i][j]) == true) {
+				stergereColoana(x, m, n, j);
+				stergereLinie(x, m, n, i);
+			}
+		}
+	}
+}
+void stergereLinieSiColoanaCuAlDoileaElementPrim(int x[100][100], int m, int n) {
+	int ctr = 1;
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (nrPrim(x[i][j]) == true && ctr == 2) {
+				stergereColoana(x, m, n, j);
+				stergereLinie(x, m, n, i);
+			}
+			else if (nrPrim(x[i][j]) == true) {
+				ctr++;
+			}
+		}
+	}
+}
