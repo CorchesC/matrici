@@ -316,3 +316,69 @@ void ex41() {
 	stergereLinieSiColoanaCuAlDoileaElementPrim(x, m, n);
 	afisare(x, m, n);
 }
+
+//exercitiul 1 fisa - chenare/spirale (25/03/2023) \/
+
+void ex42() {
+	//a) Care este produsul elementelor nenule aflate pe chenarul exterior (grad 0) al matricei? 
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int prod = produsChenarGrad0(x, m, n);
+	cout << "Produsul elementelor nenule aflate pe chenarul exterior al matricei este: " << prod << endl;
+}
+void ex43() {
+	//b) Sa se determine suma elementelor din chenarul exterior k (k citit). 
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n); 
+	cout << "Introduceti gradul k: " << endl;
+	int k;
+	cin >> k;
+	int suma = sumaChenarGradK(x, m, n, k);
+	cout << "Suma elementelor din chenarul de gradul " << k << " este: " << suma << endl;
+}
+void ex44() {
+	//c) Sa se inlocuiasca toate elementele din chenarul exterior de grad 0 cu valoarea minima din chenarul exterior de grad 1.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	schimbareChenarGrad0CuMinimGrad1(x, m, n);
+	afisare(x, m, n);
+}
+
+//Probleme PbInfo - Matrici Oarecare - (26/03/2023) \/
+
+void ex45() {
+	//Scrieți un program C/C++ care citește de la tastatură numere naturale din intervalul [3, 100], în această ordine: n și m, apoi elementele unui tablou bidimensional cu n linii și m coloane, iar la final un număr x.
+	//Programul afișează pe ecran mesajul DA, dacă există cel puțin un element egal cu x aflat pe conturul tabloului(format din prima linie, ultima linie, prima coloană și ultima coloană), sau mesajul NU în caz contrar.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	cout << "Introduceti elementul a: " << endl;
+	int a;
+	cin >> a;
+	bool aff = existaAPeChenarGrad0(x, m, n, a);
+	aff == true
+		?
+		cout << "Elementul " << a << " exista pe chenarul exterior al matricei. " << endl
+		:
+		cout << "Elementul " << a << " nu exista pe chenarul exterior al matricei. " << endl;
+}
+void ex46() {
+	//Scrieți un program care citește de la tastatură două numere naturale din intervalul [3,50], n și m, și elementele unui tablou bidimensional cu n linii și m coloane, numere naturale din intervalul [0,104].
+	//Programul modifică în memorie tabloul dat, atribuind valoarea elementului aflat pe ultima linie și pe ultima coloană a tabloului fiecărui element aflat pe conturul acestuia(pe prima linie, ultima linie, prima coloană, ultima coloană), apoi afișează pe ecran tabloul modificat, câte o linie a tabloului pe câte o linie a ecranului, elementele fiecărei linii fiind separate prin câte un spațiu.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	modificareChenarGrad0CuUltiumulElement(x, m, n);
+	afisare(x, m, n);
+}
+void ex47() {
+	//Se dă o matrice cu n linii şi m coloane şi elemente numere naturale. Să se determine mulțimea formată din elementele distincte ale chenarului matricei.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	int v[100], d = 0;
+	multimeaElementelorUniceDePeChenar(x, m, n);
+}
+void ex48() {
+	//Să se parcurgă în sensul acelor de ceasornic chenarul exterior al unei matrice pătratice.
+	int x[100][100], m = 0, n = 0;
+	citire(x, m, n);
+	parcurgereChenarGrad0MatricePatratica(x, m, n);
+}
