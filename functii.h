@@ -1008,3 +1008,192 @@ void stergereLinieSiColoanaCuAlDoileaElementPrim(int x[100][100], int m, int n) 
 		}
 	}
 }
+int produsChenarGrad0(int x[100][100], int m, int n) {
+	int prod = 1;
+	int i1 = 0;
+	int i2 = m-1;
+	int j1 = 0;
+	int j2 = n - 1;
+	for (int k = j1; k <= j2; k++) {
+		if (x[i1][k] != 0) {
+			prod = prod * x[i1][k];
+		}
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		if (x[k][j2] != 0) {
+			prod = prod * x[k][j2];
+		}
+	}
+	for (int k = j2 - 1; k >= j1; k--) {
+		if (x[i2][k] != 0) {
+			prod = prod * x[i2][k];
+		}
+	}
+	for (int k = i2; k > i1; k--) {
+		if (x[k][j1] != 0) {
+			prod = prod * x[k][j1];
+		}
+	}
+	return prod;
+} 
+int sumaChenarGradK(int x[100][100], int m, int n, int k) {
+	int suma = 0;
+	int i1 = 0 + k;
+	int i2 = (m - 1) - k;
+	int j1 = 0 + k;
+	int j2 = (n - 1) - k;
+	for (int k = j1; k <= j2; k++) {
+		suma += x[i1][k];
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		suma += x[k][j2];
+	}
+	for (int k = j2 - 1; k >= j1; k--) {
+		suma += x[i2][k];
+	}
+	for (int k = i2; k > i1; k--) {
+		suma += x[k][j1];
+	}
+	return suma;
+}
+int valoareaMinimaChenarGrad1(int x[100][100], int m, int n) {
+	int min = 9999999;
+	int i1 = 1;
+int i2 = m - 2;
+int j1 = 1;
+int j2 = n - 2;
+for (int k = j1; k <= j2; k++) {
+	if (x[i1][k] < min) {
+		min = x[i1][k];
+	}
+}
+for (int k = i1 + 1; k <= i2; k++) {
+	if (x[k][j2] < min) {
+		min = x[k][j2];
+	}
+}
+for (int k = j2 - 1; k >= j1; k--) {
+	if (x[i2][k] < min) {
+		min = x[i2][k];
+	}
+}
+for (int k = i2; k > i1; k--) {
+	min = x[k][j1];
+}
+return min;
+}
+void schimbareChenarGrad0CuMinimGrad1(int x[100][100], int m, int n) {
+	int min = valoareaMinimaChenarGrad1(x, m, n);
+	int i1 = 0;
+	int i2 = m - 1;
+	int j1 = 0;
+	int j2 = n - 1;
+	for (int k = j1; k <= j2; k++) {
+		x[i1][k] = min;
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		x[k][j2] = min;
+	}
+	for (int k = j2 - 1; k >= j1; k--) {
+		x[i2][k] = min;
+	}
+	for (int k = i2; k > i1; k--) {
+		x[k][j1] = min;
+	}
+}
+bool existaAPeChenarGrad0(int x[100][100], int m, int n, int a) {
+	int i1 = 0;
+	int i2 = m - 1;
+	int j1 = 0;
+	int j2 = n - 1;
+	for (int k = j1; k <= j2; k++) {
+		if (x[i1][k] == a) {
+			return true;
+		}
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		if (x[k][j2] == a) {
+			return true;
+		}
+	}
+	for (int k = j2 - 1; k >= j1; k--) {
+		if (x[i2][k] == a) {
+			return true;
+		}
+	}
+	for (int k = i2; k > i1; k--) {
+		if (x[k][j1] == a) {
+			return true;
+		}
+	}
+	return false;
+}
+void modificareChenarGrad0CuUltiumulElement(int x[100][100], int m, int n) {
+	int ue = x[m - 1][n - 1];
+	int i1 = 0;
+	int i2 = m - 1;
+	int j1 = 0;
+	int j2 = n - 1;
+	for (int k = j1; k <= j2; k++) {
+		x[i1][k] = ue;
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		x[k][j2] = ue;
+	}
+	for (int k = j2 - 1; k >= j1; k--) {
+		x[i2][k] = ue;
+	}
+	for (int k = i2; k > i1; k--) {
+		x[k][j1] = ue;
+	}
+}
+void multimeaElementelorUniceDePeChenar(int x[100][100], int m, int n) {
+	int v[100], d = 0;
+	int i1 = 0;
+	int i2 = m - 1;
+	int j1 = 0;
+	int j2 = n - 1;
+	for (int k = j1; k <= j2; k++) {
+		if (kApartineVectorului(v, d, x[i1][k]) == false) {
+			v[d] = x[i1][k];
+			d++;
+		}
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		if (kApartineVectorului(v, d, x[k][j2]) == false) {
+			v[d] = x[k][j2];
+			d++;
+		}
+	}
+	for (int k = j2 - 1; k >= j1; k--) {
+		if (kApartineVectorului(v, d, x[i2][k]) == false) {
+			v[d] = x[i2][k];
+			d++;
+		}
+	}
+	for (int k = i2; k > i1; k--) {
+		if (kApartineVectorului(v, d, x[k][j1]) == false) {
+			v[d] = x[k][j1];
+			d++;
+		}
+	}
+	bubbleSort(v, d);
+	afisareVector(v, d);
+}
+void parcurgereChenarGrad0MatricePatratica(int x[100][100], int m, int n) {
+	int i1 = 0;
+	int i2 = n - 1;
+	for (int k = i1; k <= i2; k++) {
+		cout << x[i1][k] << " ";
+	}
+	for (int k = i1 + 1; k <= i2; k++) {
+		cout << x[k][i2] << " ";
+	}
+	for (int k = i2 - 1; k >= i1; k--) {
+		cout << x[i2][k] << " ";
+	}
+	for (int k = i2 - 1; k > i1; k--) {
+		cout << x[k][i1] << " ";
+	}
+	cout << endl;
+}
