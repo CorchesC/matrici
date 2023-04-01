@@ -382,3 +382,40 @@ void ex48() {
 	citire(x, m, n);
 	parcurgereChenarGrad0MatricePatratica(x, m, n);
 }
+
+//Probleme PbInfo - Generare Matrici - (26/03/2023) \/
+
+void ex49() {
+	//Scrieţi un program care citeşte de la tastatură două numere naturale nenule n şi m şi care construieşte în memorie şi apoi afişează o matrice A cu n linii (numerotate de la 1 la n) şi m coloane (numerotate de la 1 la m) cu proprietatea că fiecare element Aij memorează cea mai mică dintre valorile indicilor i şi j ( 1≤i≤n, 1≤j≤m ).
+	int x[100][100], m = 0, n = 0;
+	cout << "Introduceti m: " << endl;
+	cin >> m;
+	cout << "Introduceti n: " << endl;
+	cin >> n;
+	generareMatriceEx49(x, m, n);
+	afisare(x, m, n);
+}
+void ex50() {
+	//Scrieţi un program care citeşte de la tastatură un număr natural n şi construieşte în memorie o matrice cu n linii şi n coloane ale cărei elemente vor primi valori după cum urmează:
+		//-elementele aflate pe diagonala principală a matricei vor primi valoarea 0
+		//-elementele de pe prima coloană, cu excepţia celui aflat pe diagonala principală vor primi valoarea n
+		//-elementele de pe a doua coloană, cu excepţia celui aflat pe diagonala principală vor primi valoarea n - 1
+		//…
+		//-elementele de pe ultima coloană, cu excepţia celui aflat pe diagonala principală vor primi valoarea 1
+	int x[100][100], m = 0, n = 0;
+	cout << "Introduceti m: " << endl;
+	cin >> m;
+	n = m;
+	generareMatricePatraticaEx50(x, m, n);
+	afisare(x, m, n);
+}
+void ex51() {
+	//Scrieţi un program care citeşte de la tastatură două numere naturale nenule n şi m şi construieşte în memorie o matrice cu n linii şi m coloane astfel încât, parcurgând tabloul linie cu linie de sus în jos şi fiecare linie de la stânga la dreapta, să se obţină şirul primelor n*m pătrate perfecte impare , ordonat strict crescător.
+	int x[100][100], m = 0, n = 0;
+	cout << "Introduceti m: " << endl;
+	cin >> m;
+	cout << "Introduceti n: " << endl;
+	cin >> n;
+	generareMatriceEx51(x, m, n);
+	afisare(x, m, n);
+}

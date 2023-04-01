@@ -1197,3 +1197,45 @@ void parcurgereChenarGrad0MatricePatratica(int x[100][100], int m, int n) {
 	}
 	cout << endl;
 }
+void generareMatriceEx49(int x[100][100], int m, int n) {
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (i <= j) {
+				x[i][j] = i+1;
+			}
+			if (j <= i) {
+				x[i][j] = j+1;
+			}
+		}
+	}
+}
+void generareMatricePatraticaEx50(int x[100][100], int m, int n) {
+	for (int i =1; i < m; i++) {
+		x[i][0] = m;
+	}
+	for (int j = 1; j < n - 1; j++) {
+		for (int i = 0; i < m; i++) {
+			x[i][j] = n - j;
+		}
+	}
+	for (int i = 0; i < m - 1; i++) {
+		x[i][n - 1] = 1;
+	}
+	for (int f = 0; f < n; f++) {
+		x[f][f] = 0;
+	}
+}
+void generareMatriceEx51(int x[100][100], int m, int n) {
+	int nr = m * n;
+	int ctr = 0;
+	do {
+		int a = 1;
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				x[i][j] = pow(a, 2);
+				a = 2 + a;
+				ctr++;
+			}
+		}
+	} while (ctr != nr);
+}
